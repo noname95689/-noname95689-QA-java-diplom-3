@@ -12,13 +12,15 @@ public class RegistrationPage extends HeaderPage {
     public String urlRegistrationPage = "https://stellarburgers.nomoreparties.site/register";
 
     //Поле ввода "Имя"
-    private SelenideElement inputNameRegistration = $(byXpath("//*[contains(text(),'Имя')]"));
+    private SelenideElement inputNameRegistration = $(byXpath(
+            "//div[contains(@class, 'input pr-6 pl-6 input_type_text input_size_default') and contains(.//label, 'Имя')]"));
 
     //Поле ввода "Email"
-    private SelenideElement inputEmailRegistration = $(byXpath("//*[contains(text(),'Email')]"));
+    private SelenideElement inputEmailRegistration = $(byXpath(
+            "//div[contains(@class, 'input pr-6 pl-6 input_type_text input_size_default') and contains(.//label, 'Email')]"));
 
     //Поле ввода "Пароль"
-    private SelenideElement inputPasswordRegistration = $(byXpath("//*[contains(text(),'Пароль')]"));
+    private SelenideElement inputPasswordRegistration = $(byCssSelector(".input_type_password"));
 
     //Кнопка "Зарегистрироваться"
     private SelenideElement registrationButton = $(byXpath("//*[contains(text(),'Зарегистрироваться')]"));

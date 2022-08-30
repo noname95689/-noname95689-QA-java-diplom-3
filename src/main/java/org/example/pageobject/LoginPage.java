@@ -11,10 +11,10 @@ public class LoginPage extends HeaderPage {
     private String urlLoginPage = "https://stellarburgers.nomoreparties.site/login";
 
     //Поле ввода "Email"
-    private SelenideElement inputEmailLoginPage = $(byXpath("//*[contains(text(),'Имя')]"));
+    private SelenideElement inputEmailLoginPage = $(byCssSelector(".input_type_text > input:nth-child(2)"));
 
     //Поле ввода "Пароль"
-    private SelenideElement inputPasswordLoginPage = $(byXpath("//*[contains(text(),'Пароль')]"));
+    private SelenideElement inputPasswordLoginPage = $(byCssSelector(".input_type_password"));
 
     //Кнопка "Войти"
     private SelenideElement enterButtonLoginPage = $(byXpath(".//button[text()='Войти']"));
