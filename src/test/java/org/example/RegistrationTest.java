@@ -1,9 +1,11 @@
 package org.example;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.commands.IsDisplayed;
 import org.example.model.RegistrationData;
-import org.example.pageobject.*;
+import org.example.pageobject.HeaderPage;
+import org.example.pageobject.LoginPage;
+import org.example.pageobject.MainPage;
+import org.example.pageobject.RegistrationPage;
 import org.hamcrest.MatcherAssert;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,7 +19,6 @@ public class RegistrationTest {
     HeaderPage headerPage = page(HeaderPage.class);
     RegistrationPage registrationPage = page(RegistrationPage.class);
     LoginPage loginPage = page(LoginPage.class);
-    ProfilePage profilePage = page(ProfilePage.class);
 
     @Before
     public void beforeTests() {
