@@ -31,6 +31,13 @@ public class RegistrationPage extends HeaderPage {
 
     String urlMainPage = "https://stellarburgers.nomoreparties.site/";
 
+    //Сообщение об ошибке "Некорректный пароль"
+    private SelenideElement passwordError = $(byXpath("//*[contains(text(),'Некорректный пароль')]"));
+
+    public SelenideElement getPasswordError() {
+        return passwordError;
+    }
+
     public void openRegistrationPage() {
         Selenide.open(urlRegistrationPage);
     }
@@ -43,6 +50,12 @@ public class RegistrationPage extends HeaderPage {
         registrationButton.click();
     }
 
-
+    public void inputRegistrationDataShortPassword() {
+        RegistrationData registrationData = RegistrationData.getShortPasswordRegistrationData();
+        inputNameRegistration.sendKeys(registrationData.getName());
+        inputEmailRegistration.sendKeys(registrationData.getEmail());
+        inputPasswordRegistration.sendKeys(registrationData.getPassword());
+        registrationButton.click();
+    }
 
 }

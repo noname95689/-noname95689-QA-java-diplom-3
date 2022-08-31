@@ -35,12 +35,16 @@ public class RegistrationTest {
         headerPage.clickOnProfileButton();
         loginPage.clickOnRegistrationButton();
         registrationPage.inputRegistrationData();
-        MatcherAssert.assertThat("Кнопка 'Оформить заказ' не отобразилась - авторизация не произошла",
+        MatcherAssert.assertThat("Заголовок страницы аворизации не отобразился - регистрация не произошла",
                 loginPage.getLoginPageHeader().isDisplayed());
     }
 
     @Test
     public void userWithShortPasswordCantBeRegistered() {
-
+        headerPage.clickOnProfileButton();
+        loginPage.clickOnRegistrationButton();
+        registrationPage.inputRegistrationDataShortPassword();
+        MatcherAssert.assertThat("Ошибка о недопустимом пароле не отобразилась - регистрация произошла",
+                loginPage.getLoginPageHeader().isDisplayed());
     }
 }
