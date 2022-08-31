@@ -14,6 +14,7 @@ public class LoginTest {
     HeaderPage headerPage = page(HeaderPage.class);
     RegistrationPage registrationPage = page(RegistrationPage.class);
     LoginPage loginPage = page(LoginPage.class);
+    PasswordRestorationPage passwordRestorationPage = page(PasswordRestorationPage.class);
 
     @Before
     public void beforeTests() {
@@ -30,12 +31,16 @@ public class LoginTest {
     //Авторизация через кнопку "Войти в аккаунт" на главной странице
     @Test
     public void userCanLoginWithEnterAccountButton() {
-
+        mainPage.getEnterProfileButton().click();
+        loginPage.inputLoginData();
+        mainPage.getCreateOrderButton().scrollIntoView(true);
+        MatcherAssert.assertThat("Кнопка оформить заказ не отображается - авторизация не произошла",
+                mainPage.getCreateOrderButton().isDisplayed());
     }
 
     //Авторизация через кнопку "Личный кабинет" в шапке
     @Test
-    public void userCanLoginWithProfileButtonMainPage() {
+    public void userCanLoginWithProfileButtonInHeader() {
         headerPage.clickOnProfileButton();
         loginPage.inputLoginData();
         mainPage.getCreateOrderButton().scrollIntoView(true);
@@ -45,15 +50,25 @@ public class LoginTest {
 
     //Авторизация через кнопку "Войти" на странице регистрации
     @Test
-    public void userCanLoginWithEnterAccountButtonRegistrationPage() {
-
+    public void userCanLoginWithEnterAccountButtonOnRegistrationPage() {
+        headerPage.clickOnProfileButton();
+        loginPage.clickOnRegistrationButton();
+        registrationPage.getLoginButtonRegistrationPage().click();
+        loginPage.inputLoginData();
+        mainPage.getCreateOrderButton().scrollIntoView(true);
+        MatcherAssert.assertThat("Кнопка оформить заказ не отображается - авторизация не произошла",
+                mainPage.getCreateOrderButton().isDisplayed());
     }
 
     //Авторизация через кнопку "Войти" на странице восстановления пароля.
     @Test
-    public void userCanLoginWithEnterAccountButtonPasswordRestorationPage() {
-
+    public void userCanLoginWithEnterAccountButtonOnPasswordRestorationPage() {
+        headerPage.clickOnProfileButton();
+        loginPage.getRestorePasswordButton().click();
+        passwordRestorationPage.getLoginButtonRegistrationPage().click();
+        loginPage.inputLoginData();
+        mainPage.getCreateOrderButton().scrollIntoView(true);
+        MatcherAssert.assertThat("Кнопка оформить заказ не отображается - авторизация не произошла",
+                mainPage.getCreateOrderButton().isDisplayed());
     }
-
-
 }

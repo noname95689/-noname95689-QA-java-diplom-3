@@ -25,4 +25,7 @@ public class MainPage extends HeaderPage {
         return createOrderButton;
     }
 
+    public SelenideElement getEnterProfileButton() {
+        return enterProfileButton;
+    }
 }

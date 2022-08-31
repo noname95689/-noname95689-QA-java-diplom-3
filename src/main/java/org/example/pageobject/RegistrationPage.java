@@ -30,8 +30,15 @@ public class RegistrationPage extends HeaderPage {
     //Сообщение об ошибке "Некорректный пароль"
     private SelenideElement passwordError = $(byXpath("//*[contains(text(),'Некорректный пароль')]"));
 
+    //Кнопка "Войти" возле надписи "Уже зарегистрированы?"
+    private SelenideElement loginButtonRegistrationPage = $(byXpath(".//a[text()='Войти']"));
+
     public SelenideElement getPasswordError() {
         return passwordError;
+    }
+
+    public SelenideElement getLoginButtonRegistrationPage() {
+        return loginButtonRegistrationPage;
     }
 
     public void openRegistrationPage() {

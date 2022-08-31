@@ -2,6 +2,7 @@ package org.example.pageobject;
 
 import com.codeborne.selenide.SelenideElement;
 import org.example.model.LoginData;
+import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -25,6 +26,11 @@ public class LoginPage extends HeaderPage {
     private SelenideElement registrationButtonLoginPage = $(byXpath(".//a[text()='Зарегистрироваться']"));
 
     //Кнопка "Восстановить пароль"
+    private SelenideElement restorePasswordButton = $(byXpath(".//a[text()='Восстановить пароль']"));
+
+    public SelenideElement getRestorePasswordButton() {
+        return restorePasswordButton;
+    }
 
     public void clickOnRegistrationButton() {
         registrationButtonLoginPage.click();
