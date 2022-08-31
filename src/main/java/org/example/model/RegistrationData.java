@@ -38,7 +38,7 @@ public class RegistrationData {
         return new RegistrationData(
                 "Иван",
                 "test958745@yandex.ru",
-                "qwerty"
+                "qwert"
         );
     }
 }

@@ -10,11 +10,18 @@ public class LoginPage extends HeaderPage {
 
     private String urlLoginPage = "https://stellarburgers.nomoreparties.site/login";
 
+    //Надпись "Вход"
+    public SelenideElement loginPageHeader = $(byCssSelector(".Auth_login__3hAey"));
+
+    public SelenideElement getLoginPageHeader() {
+        return loginPageHeader;
+    }
+
     //Поле ввода "Email"
-    private SelenideElement inputEmailLoginPage = $(byCssSelector(".input_type_text > input:nth-child(2)"));
+    private SelenideElement inputEmailLoginPage = $(byXpath(".//input[@type='text']"));
 
     //Поле ввода "Пароль"
-    private SelenideElement inputPasswordLoginPage = $(byCssSelector(".input_type_password"));
+    private SelenideElement inputPasswordLoginPage = $(byXpath(".//input[@type='password']"));
 
     //Кнопка "Войти"
     private SelenideElement enterButtonLoginPage = $(byXpath(".//button[text()='Войти']"));
@@ -28,8 +35,13 @@ public class LoginPage extends HeaderPage {
         registrationButtonLoginPage.click();
     }
 
+    public SelenideElement getEnterButtonLoginPage() {
+        return enterButtonLoginPage;
+    }
+
     public void inputLoginData() {
         LoginData loginData = LoginData.getCorrectLoginData();
+        inputEmailLoginPage.click();
         inputEmailLoginPage.sendKeys(loginData.getEmail());
         inputPasswordLoginPage.sendKeys(loginData.getPassword());
         enterButtonLoginPage.click();

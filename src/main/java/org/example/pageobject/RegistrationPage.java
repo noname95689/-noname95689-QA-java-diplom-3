@@ -12,15 +12,19 @@ public class RegistrationPage extends HeaderPage {
     public String urlRegistrationPage = "https://stellarburgers.nomoreparties.site/register";
 
     //Поле ввода "Имя"
-    private SelenideElement inputNameRegistration = $(byXpath(
-            "//div[contains(@class, 'input pr-6 pl-6 input_type_text input_size_default') and contains(.//label, 'Имя')]"));
+    /*private SelenideElement inputNameRegistration = $(byXpath(
+            "//div[contains(@class, 'input pr-6 pl-6 input_type_text input_size_default') and contains(.//label, 'Имя')]"));*/
+
+    private SelenideElement inputNameRegistration = $(byCssSelector("fieldset.Auth_fieldset__1QzWN:nth-child(1) > div:nth-child(1) > div:nth-child(1) > input:nth-child(2)"));
 
     //Поле ввода "Email"
-    private SelenideElement inputEmailRegistration = $(byXpath(
-            "//div[contains(@class, 'input pr-6 pl-6 input_type_text input_size_default') and contains(.//label, 'Email')]"));
+    /*private SelenideElement inputEmailRegistration = $(byXpath(
+            "//div[contains(@class, 'input pr-6 pl-6 input_type_text input_size_default') and contains(.//label, 'Email')]"));*/
+
+    private SelenideElement inputEmailRegistration = $(byCssSelector("fieldset.Auth_fieldset__1QzWN:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(2)"));
 
     //Поле ввода "Пароль"
-    private SelenideElement inputPasswordRegistration = $(byCssSelector(".input_type_password"));
+    private SelenideElement inputPasswordRegistration = $(byXpath(".//input[@type='password']"));
 
     //Кнопка "Зарегистрироваться"
     private SelenideElement registrationButton = $(byXpath("//*[contains(text(),'Зарегистрироваться')]"));
