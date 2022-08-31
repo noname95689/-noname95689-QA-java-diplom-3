@@ -1,2 +1,4 @@
-package org.example.pageobject;public class ProfilePage {
+package org.example.pageobject;
+
+public class ProfilePage {
 }

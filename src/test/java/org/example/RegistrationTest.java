@@ -31,21 +31,21 @@ public class RegistrationTest {
         //Нажимаем на кнопку принятия cookies
     }
 
-    @Test
+    /*@Test
     public void userCanBeRegistered() {
         headerPage.clickOnProfileButton();
         loginPage.clickOnRegistrationButton();
         registrationPage.inputRegistrationData();
         MatcherAssert.assertThat("Заголовок страницы аворизации не отобразился - регистрация не произошла",
                 loginPage.getLoginPageHeader().isDisplayed());
-    }
+    }*/
 
-    @Test
+   /* @Test
     public void userWithShortPasswordCantBeRegistered() {
         headerPage.clickOnProfileButton();
         loginPage.clickOnRegistrationButton();
         registrationPage.inputRegistrationDataShortPassword();
         MatcherAssert.assertThat("Ошибка о недопустимом пароле не отобразилась - регистрация произошла",
                 loginPage.getLoginPageHeader().isDisplayed());
-    }
+    }*/
 }
