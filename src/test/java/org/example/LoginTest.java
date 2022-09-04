@@ -1,10 +1,12 @@
 package org.example;
+
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import org.example.pageobject.*;
 import org.hamcrest.MatcherAssert;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.example.pageobject.*;
-
 
 import static com.codeborne.selenide.Selenide.page;
 
@@ -25,6 +27,15 @@ public class LoginTest {
         //Открываем главную страницу
         mainPage.openMainPage();
         //Нажимаем на кнопку принятия cookies
+        TestPreparation.checkIfUserCreatedAndDelete();
+        Selenide.clearBrowserLocalStorage();
+        TestPreparation.sendPostRegister();
+    }
+
+    @After
+    public void afterTests() {
+        TestPreparation.checkIfUserCreatedAndDelete();
+        Selenide.clearBrowserLocalStorage();
     }
 
 
@@ -33,7 +44,7 @@ public class LoginTest {
     public void userCanLoginWithEnterAccountButton() {
         mainPage.getEnterProfileButton().click();
         loginPage.inputLoginData();
-        mainPage.getCreateOrderButton().scrollIntoView(true);
+        mainPage.getCreateOrderButton();
         MatcherAssert.assertThat("Кнопка оформить заказ не отображается - авторизация не произошла",
                 mainPage.getCreateOrderButton().isDisplayed());
     }
@@ -43,7 +54,7 @@ public class LoginTest {
     public void userCanLoginWithProfileButtonInHeader() {
         headerPage.clickOnProfileButton();
         loginPage.inputLoginData();
-        mainPage.getCreateOrderButton().scrollIntoView(true);
+        mainPage.getCreateOrderButton();
         MatcherAssert.assertThat("Кнопка оформить заказ не отображается - авторизация не произошла",
                 mainPage.getCreateOrderButton().isDisplayed());
     }
@@ -55,7 +66,7 @@ public class LoginTest {
         loginPage.clickOnRegistrationButton();
         registrationPage.getLoginButtonRegistrationPage().click();
         loginPage.inputLoginData();
-        mainPage.getCreateOrderButton().scrollIntoView(true);
+        mainPage.getCreateOrderButton();
         MatcherAssert.assertThat("Кнопка оформить заказ не отображается - авторизация не произошла",
                 mainPage.getCreateOrderButton().isDisplayed());
     }
@@ -67,7 +78,7 @@ public class LoginTest {
         loginPage.getRestorePasswordButton().click();
         passwordRestorationPage.getLoginButtonRegistrationPage().click();
         loginPage.inputLoginData();
-        mainPage.getCreateOrderButton().scrollIntoView(true);
+        mainPage.getCreateOrderButton();
         MatcherAssert.assertThat("Кнопка оформить заказ не отображается - авторизация не произошла",
                 mainPage.getCreateOrderButton().isDisplayed());
     }

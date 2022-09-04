@@ -1,13 +1,13 @@
 package org.example;
 
 import com.codeborne.selenide.Configuration;
-import org.example.model.RegistrationData;
+import com.codeborne.selenide.Selenide;
 import org.example.pageobject.HeaderPage;
 import org.example.pageobject.LoginPage;
 import org.example.pageobject.MainPage;
 import org.example.pageobject.RegistrationPage;
 import org.hamcrest.MatcherAssert;
-import org.junit.Assert;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,26 +26,33 @@ public class RegistrationTest {
         //Configuration.browser = "Firefox";
         //Открытие браузера в полноэкранном режиме
         Configuration.startMaximized = true;
+        TestPreparation.checkIfUserCreatedAndDelete();
         //Открываем главную страницу
         mainPage.openMainPage();
         //Нажимаем на кнопку принятия cookies
     }
 
-    /*@Test
+    @After
+    public void afterTests() {
+        TestPreparation.checkIfUserCreatedAndDelete();
+        Selenide.clearBrowserLocalStorage();
+    }
+
+    @Test
     public void userCanBeRegistered() {
         headerPage.clickOnProfileButton();
         loginPage.clickOnRegistrationButton();
         registrationPage.inputRegistrationData();
         MatcherAssert.assertThat("Заголовок страницы аворизации не отобразился - регистрация не произошла",
-                loginPage.getLoginPageHeader().isDisplayed());
-    }*/
+                loginPage.getHeaderLoginPage().isDisplayed());
+    }
 
-   /* @Test
+   @Test
     public void userWithShortPasswordCantBeRegistered() {
         headerPage.clickOnProfileButton();
         loginPage.clickOnRegistrationButton();
         registrationPage.inputRegistrationDataShortPassword();
         MatcherAssert.assertThat("Ошибка о недопустимом пароле не отобразилась - регистрация произошла",
-                loginPage.getLoginPageHeader().isDisplayed());
-    }*/
+                loginPage.getHeaderLoginPage().isDisplayed());
+    }
 }

@@ -28,7 +28,7 @@ public class RegistrationData {
 
     public static RegistrationData getCorrectRegistrationData() {
         return new RegistrationData(
-                "Иван",
+                "Test",
                 "test958745@yandex.ru",
                 "qwerty"
         );
@@ -36,7 +36,7 @@ public class RegistrationData {
 
     public static RegistrationData getShortPasswordRegistrationData() {
         return new RegistrationData(
-                "Иван",
+                "Test",
                 "test958745@yandex.ru",
                 "qwerty"
         );
