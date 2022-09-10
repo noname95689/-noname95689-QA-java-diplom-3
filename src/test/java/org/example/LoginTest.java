@@ -2,12 +2,12 @@ package org.example;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.example.model.TestEnvironment;
 import org.example.pageobject.*;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
 import static com.codeborne.selenide.Selenide.page;
 
 public class LoginTest {
@@ -17,16 +17,15 @@ public class LoginTest {
     RegistrationPage registrationPage = page(RegistrationPage.class);
     LoginPage loginPage = page(LoginPage.class);
     PasswordRestorationPage passwordRestorationPage = page(PasswordRestorationPage.class);
+    TestEnvironment testEnvironment = new TestEnvironment();
 
     @Before
     public void beforeTests() {
-        //Подключение Firefox
-        //Configuration.browser = "Firefox";
+        //Запрашиваем браузер в котором будут проходить тесты.
+        Configuration.browser = testEnvironment.getBrowser();
         //Открытие браузера в полноэкранном режиме
         Configuration.startMaximized = true;
-        //Открываем главную страницу
         mainPage.openMainPage();
-        //Нажимаем на кнопку принятия cookies
         TestPreparation.checkIfUserCreatedAndDelete();
         Selenide.clearBrowserLocalStorage();
         TestPreparation.sendPostRegister();

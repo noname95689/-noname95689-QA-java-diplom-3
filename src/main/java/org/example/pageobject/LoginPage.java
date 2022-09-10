@@ -2,14 +2,10 @@ package org.example.pageobject;
 
 import com.codeborne.selenide.SelenideElement;
 import org.example.model.LoginData;
-import org.openqa.selenium.By;
-
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class LoginPage extends HeaderPage {
-
-    private String urlLoginPage = "https://stellarburgers.nomoreparties.site/login";
 
     //Заголовок c надписью "Вход".
     private SelenideElement headerLoginPage = $(byXpath("//*[contains(text(),'Вход')]"));

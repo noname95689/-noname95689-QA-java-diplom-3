@@ -2,6 +2,7 @@ package org.example;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.example.model.TestEnvironment;
 import org.example.pageobject.HeaderPage;
 import org.example.pageobject.LoginPage;
 import org.example.pageobject.MainPage;
@@ -19,17 +20,16 @@ public class RegistrationTest {
     HeaderPage headerPage = page(HeaderPage.class);
     RegistrationPage registrationPage = page(RegistrationPage.class);
     LoginPage loginPage = page(LoginPage.class);
+    TestEnvironment testEnvironment = new TestEnvironment();
 
     @Before
     public void beforeTests() {
-        //Подключение Firefox
-        //Configuration.browser = "Firefox";
+        //Запрашиваем браузер в котором будут проходить тесты.
+        Configuration.browser = testEnvironment.getBrowser();
         //Открытие браузера в полноэкранном режиме
         Configuration.startMaximized = true;
         TestPreparation.checkIfUserCreatedAndDelete();
-        //Открываем главную страницу
         mainPage.openMainPage();
-        //Нажимаем на кнопку принятия cookies
     }
 
     @After

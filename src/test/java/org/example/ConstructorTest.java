@@ -2,11 +2,14 @@ package org.example;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.example.model.TestEnvironment;
 import org.example.pageobject.*;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Properties;
 
 import static com.codeborne.selenide.Selenide.page;
 
@@ -15,14 +18,14 @@ public class ConstructorTest {
     MainPage mainPage = page(MainPage.class);
     HeaderPage headerPage = page(HeaderPage.class);
     LoginPage loginPage = page(LoginPage.class);
+    TestEnvironment testEnvironment = new TestEnvironment();
 
     @Before
     public void beforeTests() {
-        //Подключение Firefox
-        //Configuration.browser = "Firefox";
+        //Запрашиваем браузер в котором будут проходить тесты.
+        Configuration.browser = testEnvironment.getBrowser();
         //Открытие браузера в полноэкранном режиме
         Configuration.startMaximized = true;
-        //Открываем главную страницу
         mainPage.openMainPage();
         TestPreparation.checkIfUserCreatedAndDelete();
         Selenide.clearBrowserLocalStorage();
@@ -79,5 +82,4 @@ public class ConstructorTest {
         mainPage.getConstructorToppings().click();
         MatcherAssert.assertThat("Первая начинка не видна - кнопка 'Начинки' не работает", mainPage.getFirstTopping().isDisplayed());
     }
-
 }

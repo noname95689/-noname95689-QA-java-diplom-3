@@ -1,15 +1,18 @@
 package org.example.pageobject;
 
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.example.model.TestEnvironment;
 
-import static com.codeborne.selenide.Selectors.*;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class MainPage extends HeaderPage {
 
-    String urlMainPage = "https://stellarburgers.nomoreparties.site/";
+    TestEnvironment testEnvironment = new TestEnvironment();
+
+    //String urlMainPage = "https://stellarburgers.nomoreparties.site/";
+    String urlMainPage = testEnvironment.getUrlMainPage();
 
     public void openMainPage() {
         open(urlMainPage);
