@@ -24,7 +24,6 @@ public class ConstructorTest {
         Configuration.startMaximized = true;
         //Открываем главную страницу
         mainPage.openMainPage();
-        //Нажимаем на кнопку принятия cookies
         TestPreparation.checkIfUserCreatedAndDelete();
         Selenide.clearBrowserLocalStorage();
         TestPreparation.sendPostRegister();
